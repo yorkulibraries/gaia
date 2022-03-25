@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %> | Gaia</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+  	<div id="main" class="container">
+			<%= render :template => "layouts/navbar"%>
+
+			<% flash.each do |name, msg| %>
+			  <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+			    <a class="close" data-dismiss="alert">×</a>
+			    <%= msg %>
+			  </div>
+			<% end %>
+
+			<div class="box">
+				<div class="page-title">
+			    	<%= content_tag :h1, yield(:title) if show_title? && !content_for?(:title_html) %>
+						<%= yield (:title_html) if content_for?(:title_html)%>	     
+			  </div>
+				<div class="content">											    					
+						<%= yield %>					
+				</div>
+			</div>	
+			
+			<br/>		
+		</div>
+
+		<div class="container footer">
+         <!-- <p class="weak">Gaia - Map Library Services. v.<%= gaia_version %></p> -->
+		</div>
+
+	
+  </body>
+</html>

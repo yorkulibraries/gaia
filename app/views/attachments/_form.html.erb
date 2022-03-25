@@ -1,0 +1,14 @@
+
+<%= simple_form_for [@data_request, @attachment], html: { class: "form-horizontal", multipart: true } do |f| %>
+
+    <%= f.input :name %>
+
+   	<%= f.input :file, as: :file, label: "File Field:" %>  		
+  
+  	<%= f.button :submit, :class => 'btn btn-primary' %>
+		<%= link_to 'Cancel', data_requests_path, :class => 'btn btn-danger btn-small' %>
+
+<% end %>
+
+
+

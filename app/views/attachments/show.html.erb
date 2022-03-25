@@ -1,0 +1,24 @@
+<% title "Attachment" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @attachment.name %>
+</p>
+<p>
+  <strong>Created By:</strong>
+  <%= @attachment.created_by_id %>
+</p>
+<p>
+  <strong>Dataset:</strong>
+  <%= @attachment.data_request_id %>
+</p>
+<p>
+  <strong>File:</strong>
+  <%= @attachment.file %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_data_request_attachment_path(@data_request, @attachment) %> |
+  <%= link_to "Destroy", [@data_request, @attachment], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", data_request_attachments_path %>
+</p>

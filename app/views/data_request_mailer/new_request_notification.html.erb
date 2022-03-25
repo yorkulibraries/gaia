@@ -1,0 +1,31 @@
+<h3>New Request Notification</h3>
+
+<p><strong><%= @greeting %> </strong></p>
+
+<p>A New Data Request has been submitted.</p> 
+
+<table>
+  <tr>
+    <td colspan="2"><strong><%= link_to @data_request.requested_by.name, data_request_url(@data_request, host: "gaia.library.yorku.ca") %></strong></td>
+  </tr>    
+  <tr>
+    <td><strong>Phone:</strong></td>
+    <td><%= @data_request.phone %></td>
+  </tr>
+  <tr>
+    <td><strong>Email:</strong></td>
+    <td><%= @data_request.alt_email %></td>
+  </tr>
+  <tr>
+    <td><strong>Course:</strong></td>        
+    <td><%= @data_request.course_info %></td>
+  </tr>
+  <tr>
+    <td><strong>Project Due Date:</strong></td>
+    <td><%= @data_request.project_due_date.strftime("%b %e, %Y") %></td>
+  </tr>
+</table>
+
+<p>For more details, please see gaia <%= link_to "record", data_request_url(@data_request, host: "gaia.library.yorku.ca") %>.</p>    
+
+<p><italic>GAIA Map Library Application</italic></p>

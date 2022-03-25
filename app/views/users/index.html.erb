@@ -1,0 +1,27 @@
+<% title "Users" %>
+
+<p><%= link_to "Create New User", new_user_path, class: "btn btn-success" %></p>
+
+<% @users_grouped.each do |role, users| %>
+  <h4><%= role.humanize.capitalize rescue nil %></h4>
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Usertype</th>
+      <th>Role</th>
+    </tr>
+    <% for user in users %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.username %></td>
+        <td><%= user.usertype %></td>
+        <td><%= user.role %></td>
+        <td><%= link_to "Details", user %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

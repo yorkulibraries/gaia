@@ -1,0 +1,26 @@
+<% title "Data Requests" %>
+
+<ul class="nav nav-tabs">
+	<li class="<%= "active" if params[:status] == DataRequest::OPEN || params[:status] == nil %>">
+		<a href="<%= data_requests_path(status: DataRequest::OPEN) %>">Open</a>
+	</li>
+	<li class="<%= "active" if params[:status] == DataRequest::FILLED %>">
+		<a href="<%= data_requests_path(status: DataRequest::FILLED) %>">Filled</a>
+	</li>
+	<li class="<%= "active" if params[:status] == DataRequest::CANCELLED %>">
+		<a href="<%= data_requests_path(status: DataRequest::CANCELLED) %>">Cancelled</a>
+	</li>
+	<li class="<%= "active" if params[:status] == DataRequest::EXPIRED %> pull-right">
+		<a href="<%= data_requests_path(status: DataRequest::EXPIRED) %>" class="muted">Expired Requests</a>
+	</li>
+</ul>
+
+<div class="requests">
+	<% if @data_requests.size > 0 %>
+		<% @data_requests.each do |data_request| %>
+			<%= render partial: data_request %>
+		<% end %>
+	<% else %>
+		<p>There are no data request with <strong><%= params[:status] %></strong> status</p>
+	<% end %>
+</div>

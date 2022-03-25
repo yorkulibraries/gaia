@@ -1,0 +1,20 @@
+<h3>Filled Request Confirmation</h3>
+
+<p><strong><%= @greeting %></strong></p>
+
+<p>Your geospatial data request is now ready for download. This data request will <strong>expire on <%= @data_request.expires_after.strftime("%b %e, %Y") %> </strong> and the data files will be removed shortly after. If you wish to access the files after this date, you will have to re-submit a new data request</p> 
+
+<p><strong>Instructions to Download</strong></p>
+<ol>
+  <li>Log into Gaia Application <a href="http://gaia.library.yorku.ca/login">http://gaia.library.yorku.ca</a> and login using passport york credentials.</li>
+  <li>Homepage: Click "My Requests" from the top menu bar</li>
+  <li>My Requests Page: Click on your Name / Title link of the data request with status "FILLED" to see request details</li>
+  <li>Data Request Details Page: Under the "Attachments" section, below the request details, click the title of 
+    the file to download OR right click and click "Save Link As...".</li>
+</ol>
+
+<p><strong>Please note:</strong> Depending on your internet connection, download speeds will vary</p>
+
+<p>If you have any questions. please contact gislib@yorku.ca</p>
+
+GAIA Map Library Application

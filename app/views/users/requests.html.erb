@@ -1,0 +1,10 @@
+<% title "My Requests" %>
+<div class="requests">
+	<% if @data_requests.size > 0 %>
+  	<% @data_requests.each do |request| %>
+  		<%= render "data_requests/data_request", data_request: request %>
+  	<% end %>
+	<% else %>
+		<p>You currently have no data requests.</p>
+	<% end %>	
+</div>
