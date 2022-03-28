@@ -12,5 +12,7 @@ module Gaia
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     # ActiveSupport.halt_callback_chains_on_return_false = false
+    config.gaia_settings = config_for(:gaia_settings)
+    
   end
 end

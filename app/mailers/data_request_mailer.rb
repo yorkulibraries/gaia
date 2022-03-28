@@ -1,5 +1,5 @@
 class DataRequestMailer < ActionMailer::Base
-  default from: "email@set.in.config.file"
+  default from: Rails.configuration.gaia_settings['mail']['from_email']
 
   def cancel_confirmation(user=nil, data_request=nil)
 
@@ -16,7 +16,7 @@ class DataRequestMailer < ActionMailer::Base
     end
   end
 
-  def new_request_confirmation(user=nil, data_request=nil, manager='email@set.in.config.file')
+  def new_request_confirmation(user=nil, data_request=nil, manager=Rails.configuration.gaia_settings['mail']['manager_email'])
 
     if user == nil || data_request == nil
       puts "ERROR: New Request Confirmation::User or data request is nil"

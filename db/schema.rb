@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -38,13 +37,12 @@ ActiveRecord::Schema.define(version: 20200924130921) do
     t.string   "remote_address"
     t.datetime "created_at"
     t.string   "request_uuid"
+    t.index ["associated_id", "associated_type"], name: "associated_index"
+    t.index ["auditable_id", "auditable_type"], name: "auditable_index"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid"
+    t.index ["user_id", "user_type"], name: "user_index"
   end
-
-  add_index "audits", ["associated_id", "associated_type"], name: "associated_index"
-  add_index "audits", ["auditable_id", "auditable_type"], name: "auditable_index"
-  add_index "audits", ["created_at"], name: "index_audits_on_created_at"
-  add_index "audits", ["request_uuid"], name: "index_audits_on_request_uuid"
-  add_index "audits", ["user_id", "user_type"], name: "user_index"
 
   create_table "data_requests", force: :cascade do |t|
     t.boolean  "course",              default: true

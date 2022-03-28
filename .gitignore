@@ -11,6 +11,7 @@ REVISION
 assets_manifest_backup/
 config/secrets.yml
 config/database.yml
+config/gaia_settings.yml
 node_modules/
 public/assets/
 yarn.lock
