@@ -9,7 +9,7 @@ end
 # ruby "2.7.0"
 ruby "2.6.9"
 
-gem 'bundler', '1.17.2'
+gem 'bundler', '1.17.3'
 
 ## RAILS and related ##
 # gem "rails", "4.2.6"

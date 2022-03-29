@@ -19,3 +19,4 @@ yarn.lock
 .bundle
 /node_modules
 /yarn-error.log
+.ruby-version
