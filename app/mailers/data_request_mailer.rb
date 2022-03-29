@@ -16,7 +16,7 @@ class DataRequestMailer < ActionMailer::Base
     end
   end
 
-  def new_request_confirmation(user=nil, data_request=nil, manager=Rails.configuration.gaia_settings['mail']['manager_email'])
+  def new_request_confirmation(user=nil, data_request=nil, manager=Rails.configuration.gaia_settings['mail']['support_email'])
 
     if user == nil || data_request == nil
       puts "ERROR: New Request Confirmation::User or data request is nil"
@@ -48,17 +48,13 @@ class DataRequestMailer < ActionMailer::Base
         ccd << "#{u.email}, "
       end
 
-      if Rails.env.development? || Rails.env.test?
-        mail(to:"email@set.in.config.file", subject: "DEV: New Data Request has been submitted")
-      else
-        mail(to:"email@set.in.config.file", cc: ccd, subject: "New Data Request has been submitted")
-      end
-
+      mail(to:Rails.configuration.gaia_settings['mail']['manager_email'], cc: ccd, subject: "New Data Request has been submitted")
+      
     end
 
   end
 
-  def filled_request_notification(user=nil, data_request=nil, manager='email@set.in.config.file')
+  def filled_request_notification(user=nil, data_request=nil, manager=Rails.configuration.gaia_settings['mail']['support_email'])
 
     if user == nil || data_request == nil
       puts "ERROR: New Filled Confirmation::User or data request is nil"

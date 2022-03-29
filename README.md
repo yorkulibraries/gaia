@@ -27,7 +27,6 @@
 
 ## Setup Mail
 * Create file config/gata_settings.yml if doesn't exists
-
 ```
   development:
     mail:
