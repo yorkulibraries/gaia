@@ -17,3 +17,5 @@ public/assets/
 yarn.lock
 *.log
 .bundle
+/node_modules
+/yarn-error.log
