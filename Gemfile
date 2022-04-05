@@ -95,7 +95,7 @@ group :test do
   gem "minitest", "5.15.0" #, "5.6.1"
   gem 'webrat', "0.7.3"
   gem 'factory_girl_rails', "4.5.0"
-  gem 'shoulda', "3.5"
+  gem 'shoulda', "3.6"
   gem 'shoulda-matchers'
   gem 'shoulda-context'
   gem "mocha", "0.14", require: false

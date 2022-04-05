@@ -49,7 +49,7 @@ class DataRequestMailer < ActionMailer::Base
       end
 
       mail(to:Rails.configuration.gaia_settings['mail']['manager_email'], cc: ccd, subject: "New Data Request has been submitted")
-      
+
     end
 
   end

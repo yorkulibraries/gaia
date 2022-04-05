@@ -31,11 +31,23 @@
   development:
     mail:
       from_name: "DoNoReply"
-      from_email: "noreply@domain.com"
-      manager_email: "testing@domain.com"
+      from_email: "noreply@library.yorku.ca"
+      manager_email: "testman@mailinator.com"
+      support_email: "commonsupport@mailbox.com"
+
+  test:
+    mail:
+      from_name: "DoNoReply"
+      from_email: "noreply@library.yorku.ca"
+      manager_email: "testman@mailinator.com"
+      support_email: "commonsupport@mailbox.com"
 
   production:
     mail:
       from_name: "DoNoReply"
-      from_email: "noreply@domain.com"
+      from_email: "noreply@library.yorku.ca"
       manager_email: "somemanager@mailinator.com"
+      support_email: "commonsupport@mailbox.com"
+
+
+```
