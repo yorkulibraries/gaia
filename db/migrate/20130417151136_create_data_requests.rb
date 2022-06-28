@@ -1,4 +1,4 @@
-class CreateDataRequests < ActiveRecord::Migration
+class CreateDataRequests < ActiveRecord::Migration[5.1]
   def self.up
     create_table :data_requests do |t|
       t.boolean :course, default: true
