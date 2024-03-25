@@ -54,14 +54,6 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li><%= link_to "Logout", logout_path %></li>
-								<% if Rails.env.development? %>
-									<li class="divider"></li>
-									<li class="nav-header">Log in as </li>
-									<%  [User::ADMIN_ROLE, User::MANAGER_ROLE, User::STAFF_ROLE, User::REGULAR_USER_ROLE].each do |role| %>
-										<li><%= link_to role, login_path(:as => role)%></li>
-									<%  end %>
-									<li><%= link_to "Faculty User", login_path(:as => "faculty")%></li>
-								<% end %>
 							</ul>
 						</li>
 				</ul>
