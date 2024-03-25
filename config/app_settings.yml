@@ -1,0 +1,22 @@
+development:
+  mail:
+    from_name: <%= ENV["MAIL_FROM_NAME"] || "GAIA" %>
+    from_email: <%= ENV["MAIL_FROM"] || "no-reply@localhost" %>
+    manager_email: <%= ENV["MANAGER_EMAIL"] || "manager@localhost" %>
+    support_email: <%= ENV["SUPPORT_EMAIL"] || "support@localhost" %>
+
+production:
+  mail:
+    from_name: <%= ENV["MAIL_FROM_NAME"] || "GAIA" %>
+    from_email: <%= ENV["MAIL_FROM"] || "no-reply@localhost" %>
+    manager_email: <%= ENV["MANAGER_EMAIL"] || "manager@localhost" %>
+    support_email: <%= ENV["SUPPORT_EMAIL"] || "support@localhost" %>
+
+test:
+  mail:
+    from_name: "GAIA"
+    from_email: "no-reply@localhost"
+    manager_email: "manager@localhost"
+    support_email: "support@localhost"
+
+

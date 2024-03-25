@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20200924130921) do
 
-  create_table "attachments", force: :cascade do |t|
+  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.string "name"
     t.text "description"
     t.integer "created_by_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20200924130921) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "audits", force: :cascade do |t|
+  create_table "audits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.integer "auditable_id"
     t.string "auditable_type"
     t.integer "associated_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20200924130921) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
-  create_table "data_requests", force: :cascade do |t|
+  create_table "data_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.boolean "course", default: true
     t.string "course_info"
     t.string "project_description"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20200924130921) do
     t.text "scanned_maps"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3" do |t|
     t.string "name"
     t.string "email"
     t.string "username"

@@ -1,5 +1,6 @@
 db/*.sqlite3
-log/*.log
+log/*
+!log/.keep
 tmp/
 public/uploads/**/*
 MissingDrawer.tmplugin
@@ -10,9 +11,6 @@ uploads/
 REVISION
 assets_manifest_backup/
 config/secrets.yml
-config/database.yml
-config/gaia_settings.yml
-config/app_settings.yml
 node_modules/
 public/assets/
 yarn.lock
@@ -21,3 +19,4 @@ yarn.lock
 /node_modules
 /yarn-error.log
 .ruby-version
+override.env
