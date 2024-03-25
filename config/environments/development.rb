@@ -31,12 +31,10 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  ## Use mailcatcher -f --http-ip 0.0.0.0 in vagrant
+  # set delivery method to :smtp, :sendmail or :test
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "localhost",
-    port: 1025,
-  }
+  config.action_mailer.smtp_settings = { address: 'mail', port: 1025 }
+  config.action_mailer.default_url_options = { host: 'localhost:' + ENV['PORT'] }
 
 
   # Print deprecation notices to the Rails logger.
