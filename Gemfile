@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby File.read('.ruby-version').strip
 
 ## RAILS and related ##
-gem 'rails', '~> 5.1.7'
+gem 'rails', '~> 5.2.0'
 gem 'responders', '~> 2.0'
 
 ## RAILS related ##
@@ -37,7 +37,7 @@ gem 'jquery-fileupload-rails'
 ## BOOTSTRAP && SIMPLE_FORM && FLASH UPLOAD ##
 gem 'twitter-bootstrap-rails', "2.2.8" #"3.2.2"
 gem "less-rails", "4.0.0"
-gem "simple_form", "3.5.1" #"3.4.0" #rails 5.1 => 3.5.1 (< rails 5.2) | 5.1.0 rails 5.2
+gem "simple_form"
 gem "font-awesome-rails", '~> 4.7.0'
 gem 'chosen-rails', "0.9.11.2"
 
