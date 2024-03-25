@@ -1,10 +1,10 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     name { generate(:name) }
     email { generate(:email) }
     username { generate(:username) }
-    usertype "UNDERGRAD"
-    role User::MANAGER_ROLE
-    deleted false
+    usertype { "UNDERGRAD" }
+    role { User::MANAGER_ROLE }
+    deleted { false }
   end
 end

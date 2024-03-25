@@ -45,11 +45,11 @@ gem "mini_magick", "3.7.0"
 group :test do
 
   gem "minitest", "5.15.0" #, "5.6.1"
-  gem 'factory_girl_rails', "4.5.0"
+  gem "factory_bot_rails"
   gem 'shoulda', "3.6"
   gem 'shoulda-matchers'
   gem 'shoulda-context'
-  gem 'database_cleaner', "1.2.0"
+  gem 'database_cleaner'
   gem 'rails-controller-testing'
 
   gem 'sqlite3', '~> 1.3.0'

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   sequence(:random_string) {|n| "Lorem Ipsum is simply dummy text#{n}" }
   sequence(:email) {|n| "email-#{n}@email.com" }
   sequence(:name) {|n| "John the #{n}st" }
