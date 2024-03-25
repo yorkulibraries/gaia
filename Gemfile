@@ -13,9 +13,9 @@ gem 'mysql2', '0.5.3'
 
 
 ## CSS AND JAVASCRIPT ##
-gem 'sprockets', '3.7.2' #'2.11.3' # 2.12.0 is broken
+gem 'sprockets', '< 4.0.0'
 gem 'sprockets-rails'
-gem 'sass-rails', '< 5.0.8' #5.0.8 onwards for rails 5.2
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2.2'
 gem 'jquery-rails'
