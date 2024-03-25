@@ -34,9 +34,9 @@ gem "font-awesome-rails", '~> 4.7.0'
 gem 'chosen-rails', "0.9.11.2"
 
 ## TOOLS AND UTILITIES ##
-gem 'kaminari', "0.17.0" #"0.15.1"
-gem "cancancan", "1.15.0"
-gem "rubyzip", "2.3.2"
+gem 'kaminari'
+gem "cancancan"
+gem "rubyzip"
 
 ## UPLOADING AND MANIPULATING FILES ##
 gem "carrierwave"
@@ -56,6 +56,6 @@ group :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console'
 end
 
