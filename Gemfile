@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby "2.6.9"
+ruby "2.7.8"
 
 ## RAILS and related ##
 gem 'rails', '~> 5.1.7'
