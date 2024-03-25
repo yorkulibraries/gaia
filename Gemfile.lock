@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/ryanb/populator.git
-  revision: 6a0855bcc5a894a31e03eed71ed85abdc0776d59
-  specs:
-    populator (1.0.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -49,20 +43,9 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
-    bcrypt (3.1.20)
     bindex (0.8.1)
     builder (3.2.4)
-    bullet (7.1.6)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.11)
-    byebug (11.1.3)
     cancancan (1.15.0)
-    capybara (2.1.0)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -72,7 +55,6 @@ GEM
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
-    coderay (1.1.3)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -85,52 +67,20 @@ GEM
     crass (1.0.6)
     database_cleaner (1.2.0)
     date (3.3.4)
-    em-websocket (0.5.3)
-      eventmachine (>= 0.12.9)
-      http_parser.rb (~> 0)
     erubi (1.12.0)
-    eventmachine (1.2.7)
-    exception_notification (4.4.3)
-      actionmailer (>= 4.0, < 7)
-      activesupport (>= 4.0, < 7)
     execjs (2.9.1)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faker (3.2.3)
-      i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
-    formatador (1.1.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    guard (2.18.1)
-      formatador (>= 0.2.4)
-      listen (>= 2.7, < 4.0)
-      lumberjack (>= 1.0.12, < 2.0)
-      nenv (~> 0.1)
-      notiffany (~> 0.0)
-      pry (>= 0.13.0)
-      shellany (~> 0.0)
-      thor (>= 0.18.1)
-    guard-compat (1.2.1)
-    guard-livereload (2.5.2)
-      em-websocket (~> 0.5)
-      guard (~> 2.8)
-      guard-compat (~> 1.0)
-      multi_json (~> 1.8)
-    guard-minitest (2.4.6)
-      guard-compat (~> 1.2)
-      minitest (>= 3.0)
-    http_parser.rb (0.8.0)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.11.5)
-      actionview (>= 5.0.0)
-      activesupport (>= 5.0.0)
     jquery-fileupload-rails (1.0.0)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -151,21 +101,16 @@ GEM
       actionpack (>= 4)
       less (~> 2.6.0)
       sprockets (>= 2)
-    libv8 (3.16.14.19.1)
-    listen (3.9.0)
-      rb-fsevent (~> 0.10, >= 0.10.3)
-      rb-inotify (~> 0.9, >= 0.9.10)
+    libv8 (3.16.14.19.1-x86_64-linux)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    lumberjack (1.2.10)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
       net-smtp
     marcel (1.0.4)
-    metaclass (0.0.4)
     method_source (1.0.0)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
@@ -173,13 +118,8 @@ GEM
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
     minitest (5.15.0)
-    mocha (0.14.0)
-      metaclass (~> 0.0.1)
-    multi_json (1.15.0)
     mysql2 (0.5.3)
-    nenv (0.3.0)
     net-imap (0.4.10)
       date
       net-protocol
@@ -189,23 +129,13 @@ GEM
       timeout
     net-smtp (0.4.0.1)
       net-protocol
-    nifty-generators (0.4.6)
     nio4r (2.7.1)
-    nokogiri (1.15.6)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.15.6-x86_64-linux)
       racc (~> 1.4)
-    notiffany (0.1.3)
-      nenv (~> 0.1)
-      shellany (~> 0.0)
-    pry (0.14.2)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (2.2.9)
-    rack-livereload (0.5.2)
-      rack (< 3)
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (5.2.8.1)
@@ -243,10 +173,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     ref (2.0.0)
-    responders (2.4.1)
-      actionpack (>= 4.2.0, < 6.0)
-      railties (>= 4.2.0, < 6.0)
-    ruby-prof (1.6.3)
     rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -261,7 +187,6 @@ GEM
       tilt (>= 1.1, < 3)
     sassc (2.4.0)
       ffi (~> 1.9)
-    shellany (0.0.1)
     shoulda (3.6.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (~> 3.0)
@@ -271,10 +196,6 @@ GEM
     simple_form (5.3.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
-    spring (2.1.1)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -291,9 +212,6 @@ GEM
     thread_safe (0.3.6)
     tilt (2.3.0)
     timeout (0.4.1)
-    turbolinks (5.2.1)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
       execjs
@@ -303,77 +221,50 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
-    uniform_notifier (1.16.0)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webrat (0.7.3)
-      nokogiri (>= 1.2.0)
-      rack (>= 1.0)
-      rack-test (>= 0.5.3)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    xpath (2.1.0)
-      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
-  bullet
-  byebug
   cancancan (= 1.15.0)
-  capybara (= 2.1.0)
   carrierwave (= 0.10.0)
   chosen-rails (= 0.9.11.2)
   coffee-rails (~> 4.2.2)
   database_cleaner (= 1.2.0)
-  exception_notification (= 4.4.3)
   factory_girl_rails (= 4.5.0)
-  faker
   font-awesome-rails (~> 4.7.0)
-  guard-livereload
-  guard-minitest (= 2.4.6)
-  jbuilder (~> 2.5)
   jquery-fileupload-rails
   jquery-rails
   jquery-ui-rails (= 5.0.5)
   kaminari (= 0.17.0)
   less-rails (= 4.0.0)
-  listen
   mini_magick (= 3.7.0)
   minitest (= 5.15.0)
-  mocha (= 0.14)
   mysql2 (= 0.5.3)
-  nifty-generators (= 0.4.6)
-  populator!
   puma
-  rack-livereload
   rails (~> 5.2.0)
   rails-controller-testing
-  responders (~> 2.0)
-  ruby-prof
   rubyzip (= 2.3.2)
   sass-rails (< 5.0.8)
   shoulda (= 3.6)
   shoulda-context
   shoulda-matchers
   simple_form
-  spring
-  spring-watcher-listen (~> 2.0.0)
   sprockets (= 3.7.2)
   sprockets-rails
   sqlite3 (~> 1.3.0)
   therubyracer
-  turbolinks (~> 5)
   twitter-bootstrap-rails (= 2.2.8)
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  webrat (= 0.7.3)
 
 RUBY VERSION
    ruby 2.7.8p225
