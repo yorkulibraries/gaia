@@ -39,8 +39,8 @@ gem "cancancan", "1.15.0"
 gem "rubyzip", "2.3.2"
 
 ## UPLOADING AND MANIPULATING FILES ##
-gem "carrierwave", "0.10.0" #https://rubygems.org/gems/carrierwave/versions/1.0.0
-gem "mini_magick", "3.7.0"
+gem "carrierwave"
+gem "mini_magick"
 
 group :test do
 
