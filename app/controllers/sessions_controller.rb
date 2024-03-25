@@ -10,15 +10,6 @@ class SessionsController < ApplicationController
       email: request.headers['HTTP_PYORK_EMAIL']
     }
 
-    if Rails.env.development?
-      # dev setup for loggin in
-      if params[:as].nil?
-        pyi = { username: User::MANAGER_ROLE }
-      else
-        pyi = { username: params[:as] }
-      end
-    end
-
     @user = User.find_or_create(pyi)
     session[:user_id] = @user.id
     if @user.role == User::REGULAR_USER_ROLE
