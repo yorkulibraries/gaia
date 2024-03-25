@@ -31,7 +31,7 @@ gem 'twitter-bootstrap-rails', "2.2.8" #"3.2.2"
 gem "less-rails", "4.0.0"
 gem "simple_form"
 gem "font-awesome-rails", '~> 4.7.0'
-gem 'chosen-rails', "0.9.11.2"
+gem 'chosen-rails'
 
 ## TOOLS AND UTILITIES ##
 gem 'kaminari'
