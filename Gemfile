@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby "2.7.8"
+ruby File.read('.ruby-version').strip
 
 ## RAILS and related ##
 gem 'rails', '~> 5.1.7'
