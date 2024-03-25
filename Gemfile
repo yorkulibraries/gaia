@@ -44,7 +44,7 @@ gem "mini_magick", "3.7.0"
 
 group :test do
 
-  gem "minitest", "5.15.0" #, "5.6.1"
+  gem "minitest"
   gem "factory_bot_rails"
   gem 'shoulda', "3.6"
   gem 'shoulda-matchers'

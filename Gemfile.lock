@@ -124,7 +124,7 @@ GEM
       subexec (~> 0.2.1)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.15.0)
+    minitest (5.22.3)
     mysql2 (0.5.3)
     net-imap (0.4.10)
       date
@@ -254,7 +254,7 @@ DEPENDENCIES
   kaminari (= 0.17.0)
   less-rails (= 4.0.0)
   mini_magick (= 3.7.0)
-  minitest (= 5.15.0)
+  minitest
   mysql2 (= 0.5.3)
   puma
   rails (~> 5.2.0)
