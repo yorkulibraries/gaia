@@ -1,53 +1,66 @@
-# GAIA README
-
-# MUST DO BEFORE RUNNING GAIA
-
-## Database setup
-* Create the config/database.yml file if it doesn't exists
-* E.g. database.yml
-```
-  #sqlite example
-  development:
-    adapter: sqlite3
-    database: db/development.sqlite3
-    pool: 5
-    timeout: 5000
-
-  #mysql example
-  production:
-      adapter: mysql2
-      encoding: utf8
-      reconnect: false
-      database: <db-name>
-      pool: 5
-      username: <db-username>
-      password: <db-password> or <%= ENV['db-env-password'] %>
-      host: mysql.local
-      port: 3306
-
-## Setup Mail
-* Create file config/gata_settings.yml if doesn't exists
-```
-  development:
-    mail:
-      from_name: "DoNoReply"
-      from_email: "noreply@library.yorku.ca"
-      manager_email: "testman@mailinator.com"
-      support_email: "commonsupport@mailbox.com"
-
-  test:
-    mail:
-      from_name: "DoNoReply"
-      from_email: "noreply@library.yorku.ca"
-      manager_email: "testman@mailinator.com"
-      support_email: "commonsupport@mailbox.com"
-
-  production:
-    mail:
-      from_name: "DoNoReply"
-      from_email: "noreply@library.yorku.ca"
-      manager_email: "somemanager@mailinator.com"
-      support_email: "commonsupport@mailbox.com"
-
+# Start developing
 
 ```
+git clone https://github.com/yorkulibraries/gaia.git
+cd gaia
+docker compose up --build
+```
+
+There are 3 containers created: **web**, **db** and **mailcatcher**
+
+# Access the front end web app in DEVELOPMENT 
+
+http://localhost:3007/
+
+By default, the application will listen on port 3004 and runs with RAILS_ENV=development.
+
+To access the application in Chrome browser, you will need to add the ModHeader extension to your Chrome browser.
+
+Header: PYORK_USER
+Value: admin (or manager or whatever user you want to mimic)
+
+For convenience, you can import the ModHeader profile from the included ModHeader_admin.json. 
+
+# Access mailcatcher web app
+
+http://localhost:3087/
+
+# What if I want to use a different port?
+
+If you wish to use a different port, you can set the PORT environment or change PORT in .env file.
+
+```
+PORT=4005 docker compose up --build
+```
+
+# Run tests
+
+Start the containers if you haven't started them yet.
+
+```
+docker compose up --build
+```
+
+Run all the tests
+
+```
+docker compose exec web rt 
+```
+
+Run a specific test
+```
+docker compose exec web rt test/controllers/users_controller_test.rb
+```
+
+# Access the containers
+
+DB container
+```
+docker compose exec db bash
+```
+
+Webapp container
+```
+docker compose exec web bash
+```
+
