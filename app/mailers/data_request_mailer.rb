@@ -1,6 +1,4 @@
 class DataRequestMailer < ActionMailer::Base
-  default from: Rails.configuration.gaia_settings['mail']['from_email']
-
   def cancel_confirmation(user=nil, data_request=nil)
 
     if user == nil || data_request == nil
