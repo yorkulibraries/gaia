@@ -117,10 +117,4 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-
-  # set delivery method to :smtp, :sendmail or :test
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: ENV['MAILER_SMTP_HOST'], port: ENV['MAILER_SMTP_PORT'] }
-  config.action_mailer.default_url_options = { host: ENV['MAILER_DEFAULT_URL'] }
-  config.action_mailer.default_options = { from: ENV['MAILER_DEFAULT_FROM'] }
 end

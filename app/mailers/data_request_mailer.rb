@@ -1,4 +1,6 @@
 class DataRequestMailer < ActionMailer::Base
+  default from: Rails.configuration.gaia_settings[:mail][:from_email]
+
   def cancel_confirmation(user=nil, data_request=nil)
 
     if user == nil || data_request == nil
@@ -14,8 +16,7 @@ class DataRequestMailer < ActionMailer::Base
     end
   end
 
-  def new_request_confirmation(user=nil, data_request=nil, manager=Rails.configuration.gaia_settings['mail']['support_email'])
-
+  def new_request_confirmation(user=nil, data_request=nil, manager=Rails.configuration.gaia_settings[:mail][:support_email])
     if user == nil || data_request == nil
       puts "ERROR: New Request Confirmation::User or data request is nil"
     else
@@ -52,7 +53,7 @@ class DataRequestMailer < ActionMailer::Base
 
   end
 
-  def filled_request_notification(user=nil, data_request=nil, manager=Rails.configuration.gaia_settings['mail']['support_email'])
+  def filled_request_notification(user=nil, data_request=nil, manager=Rails.configuration.gaia_settings[:mail][:support_email])
 
     if user == nil || data_request == nil
       puts "ERROR: New Filled Confirmation::User or data request is nil"

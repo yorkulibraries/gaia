@@ -4,7 +4,7 @@ class DataRequest < ApplicationRecord
   has_many :attachments
 
   belongs_to :requested_by, foreign_key: "requested_by_id", class_name: "User"
-  belongs_to :completed_by, foreign_key: "completed_by_id", class_name: "User"
+  belongs_to :completed_by, foreign_key: "completed_by_id", class_name: "User", optional: true
 
   ## VALIDATIONS
   validates_inclusion_of :course, in: [true, false]

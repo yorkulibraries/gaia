@@ -18,5 +18,3 @@ test:
     from_email: "no-reply@localhost"
     manager_email: "manager@localhost"
     support_email: "support@localhost"
-
-

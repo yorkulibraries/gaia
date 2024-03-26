@@ -73,10 +73,4 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-
-  # set delivery method to :smtp, :sendmail or :test
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: ENV['MAILER_SMTP_HOST'], port: ENV['MAILER_SMTP_PORT'] }
-  config.action_mailer.default_url_options = { host: ENV['MAILER_DEFAULT_URL'] }
-  config.action_mailer.default_options = { from: ENV['MAILER_DEFAULT_FROM'] }
 end
