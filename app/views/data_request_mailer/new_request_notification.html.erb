@@ -6,7 +6,7 @@
 
 <table>
   <tr>
-    <td colspan="2"><strong><%= link_to @data_request.requested_by.name, data_request_url(@data_request, host: "gaia.library.yorku.ca") %></strong></td>
+    <td colspan="2"><strong><%= link_to @data_request.requested_by.name, data_request_url(@data_request) %></strong></td>
   </tr>    
   <tr>
     <td><strong>Phone:</strong></td>
@@ -26,6 +26,6 @@
   </tr>
 </table>
 
-<p>For more details, please see gaia <%= link_to "record", data_request_url(@data_request, host: "gaia.library.yorku.ca") %>.</p>    
+<p>For more details, please see gaia <%= link_to "record", data_request_url(@data_request) %>.</p>    
 
 <p><italic>GAIA Map Library Application</italic></p>
