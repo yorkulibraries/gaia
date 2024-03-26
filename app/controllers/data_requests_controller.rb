@@ -63,7 +63,7 @@ class DataRequestsController < ApplicationController
     params[:data_request][:participants_names] = "" if params[:data_request][:participants_count] == "1"
 
     @data_request = DataRequest.find(params[:id])
-    if @data_request.update_attributes(data_request_params)
+    if @data_request.update(data_request_params)
       redirect_to @data_request, notice: "Successfully updated data request."
     else
       render :action => 'edit'

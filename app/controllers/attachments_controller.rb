@@ -48,7 +48,7 @@ class AttachmentsController < ApplicationController
 
   def update
     @attachment = Attachment.find(params[:id])
-    if @attachment.update_attributes(attachment_params)
+    if @attachment.update(attachment_params)
       redirect_to @data_request, :notice  => "Successfully updated attachment."
     else
       render :action => 'edit'

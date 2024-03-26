@@ -31,7 +31,7 @@ class UserTest < ActiveSupport::TestCase
   should "be able to update user, only email, name and role" do
     user = create(:user, email: "email@email.com", name: "John Doe", role: User::STAFF_ROLE)
 
-    user.update_attributes({ email: "new@email.com", name: "Bradley Johnson", role: User::REGULAR_USER_ROLE})
+    user.update({ email: "new@email.com", name: "Bradley Johnson", role: User::REGULAR_USER_ROLE})
     user.reload
     assert_equal "new@email.com", user.email, "email changed"
     assert_equal "Bradley Johnson", user.name, "name changed"
