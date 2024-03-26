@@ -2,8 +2,17 @@ source 'http://rubygems.org'
 
 ruby File.read('.ruby-version').strip
 
-## RAILS and related ##
-gem 'rails', '~> 5.2.0'
+## RAILS and server ##
+gem 'rails', '~> 6.1.6'
+
+## RAILS related ##
+gem 'jbuilder', '~> 2.5'
+gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'sass-rails', '5.0.8'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.2'
+gem "sprockets", ">= 3.7.2"
+gem "therubyracer", platforms: :ruby
 
 ## DEPLOYMENT ##
 gem 'puma'
@@ -11,25 +20,15 @@ gem 'puma'
 ## DATABASES ##
 gem 'mysql2', '0.5.3'
 
-
 ## CSS AND JAVASCRIPT ##
-gem 'sprockets', '< 4.0.0'
-gem 'sprockets-rails'
-gem 'sass-rails'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2.2'
-gem 'jquery-rails'
-
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
-
-gem 'jquery-ui-rails', "5.0.5"
+gem 'jquery-rails', "4.3.1"
+gem 'jquery-ui-rails', "6.0.1"
 gem 'jquery-fileupload-rails'
 
 ## BOOTSTRAP && SIMPLE_FORM && FLASH UPLOAD ##
 gem 'twitter-bootstrap-rails', "2.2.8" #"3.2.2"
 gem "less-rails", "4.0.0"
-gem "simple_form"
+gem "simple_form", "4.0.0"
 gem "font-awesome-rails", '~> 4.7.0'
 gem 'chosen-rails'
 
@@ -52,10 +51,11 @@ group :test do
   gem 'database_cleaner'
   gem 'rails-controller-testing'
 
-  gem 'sqlite3', '~> 1.3.0'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
   gem 'web-console'
+  gem 'listen'
 end
 
