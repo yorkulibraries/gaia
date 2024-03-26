@@ -9,7 +9,8 @@ class HomeControllerTest < ActionController::TestCase
     end
 
     should "redirect to data requests url if Staff or MANAGER" do
-      @user.update(:role, User::MANAGER_ROLE)
+      @user.role = User::MANAGER_ROLE
+      @user.save
       get :index, params: {}
       assert_response :redirect
       assert_redirected_to data_requests_url, "Goes to all data requests"
@@ -17,7 +18,8 @@ class HomeControllerTest < ActionController::TestCase
 
 
     should "redirect to data requests url if REGULAR USER" do
-      @user.update(:role, User::REGULAR_USER_ROLE)
+      @user.role = User::REGULAR_USER_ROLE
+      @user.save
       session[:terms_accepted] = true
       get :index, params: {}
       assert_response :redirect
