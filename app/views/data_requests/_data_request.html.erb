@@ -1,7 +1,7 @@
 <div class="request"  data-id="<%= data_request.id %>">
 	<div class="row">
 		<div class="span6 name">
-			<h3><%= link_to data_request.requested_by.name, data_request %></h3>
+			<h3><%= link_to data_request.requested_by.nil? ? "#{data_request.id}" : data_request.requested_by.name, data_request %></h3>
 		</div>
 		<div class="span4 due_date">
 			<span class="field-label">due on: </span><strong><%= data_request.project_due_date.strftime("%b %e, %Y")%></strong>
