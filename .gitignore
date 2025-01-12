@@ -19,3 +19,8 @@ yarn.lock
 /node_modules
 /yarn-error.log
 override.env
+*.env
+!.env
+*.sql
+*.sql.gz
+log/*
