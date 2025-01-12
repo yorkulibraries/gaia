@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_09_24_130921) do
 
-  create_table "attachments", charset: "utf8mb3", force: :cascade do |t|
+  create_table "attachments", id: :integer, charset: "utf8mb3", collation: "utf8mb3_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "created_by_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_130921) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "audits", charset: "utf8mb3", force: :cascade do |t|
+  create_table "audits", id: :integer, charset: "utf8mb3", collation: "utf8mb3_unicode_ci", force: :cascade do |t|
     t.integer "auditable_id"
     t.string "auditable_type"
     t.integer "associated_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_130921) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
-  create_table "data_requests", charset: "utf8mb3", force: :cascade do |t|
+  create_table "data_requests", id: :integer, charset: "utf8mb3", collation: "utf8mb3_unicode_ci", force: :cascade do |t|
     t.boolean "course", default: true
     t.string "course_info"
     t.string "project_description"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_130921) do
     t.text "scanned_maps"
   end
 
-  create_table "users", charset: "utf8mb3", force: :cascade do |t|
+  create_table "users", id: :integer, charset: "utf8mb3", collation: "utf8mb3_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "username"
