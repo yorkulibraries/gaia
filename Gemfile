@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 ruby File.read('.ruby-version').strip
 
 ## RAILS and server ##
-gem 'rails', '~> 6.1.6'
+gem 'rails', '~> 7.0.0'
 
 ## RAILS related ##
 gem 'jbuilder', '~> 2.5'
