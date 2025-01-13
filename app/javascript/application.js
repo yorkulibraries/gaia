@@ -84,6 +84,7 @@ $(function() {
   if ($("#data_request_participants_count").val() > 1) {
     $("#participants_names_box").show();
   }
+  
   $("#data_request_participants_count").change(function() {
     if ($("#data_request_participants_count").val() > 1) {
       $("#participants_names_box").show();
