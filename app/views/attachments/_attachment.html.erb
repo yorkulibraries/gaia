@@ -9,12 +9,7 @@
   <div class="media-body">
 
 	  <% if attachment.data_request.status != DataRequest::FILLED  %>
-			<a class="delete_attachment pull-right red" href="#" data-toggle="popover" data-attachment-id="<%= attachment.id %>"><i class="icon-remove-circle"></i> Delete</a>
- 			<div id="confirmation_attachment_delete_<%= attachment.id%>" class="hide">
-				Are you sure?
-				<%= link_to "Yes", [@data_request,attachment],:method => :delete , :class => "btn-link" %> or
-					<a href="#" class="no-link" onclick="$('#attachment_<%= attachment.id %> .delete_attachment').popover('hide'); return false; ">No</a>
-			</div>
+	    <%= link_to "Delete", [@data_request,attachment], :method => :delete , :class => "delete_attachment pull-right red", data: { confirm: 'Are you sure?' } %>
     <% end %>
 
 		<h4>

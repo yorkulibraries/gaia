@@ -8,12 +8,8 @@ gem 'rails', '~> 7.0.0'
 ## RAILS related ##
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt-ruby', '~> 3.1.2'
-gem 'sass-rails', '5.0.8'
-gem 'uglifier', '>= 1.3.0'
-gem "sprockets", ">= 3.7.2"
 
 gem "therubyracer", platforms: :ruby
-gem 'coffee-rails', '~> 4.2'
 
 ## DEPLOYMENT ##
 gem 'puma'
@@ -22,13 +18,13 @@ gem 'puma'
 gem 'mysql2'
 
 ## CSS AND JAVASCRIPT ##
-gem 'jquery-rails', "4.3.1"
-gem 'jquery-ui-rails', "6.0.1"
-gem 'jquery-fileupload-rails'
+gem 'sass-rails', '5.0.8'
+gem "less-rails", "4.0.0"
+gem "sprockets-rails"
+gem 'importmap-rails'
 
 ## BOOTSTRAP && SIMPLE_FORM && FLASH UPLOAD ##
 gem 'twitter-bootstrap-rails', "2.2.8" #"3.2.2"
-gem "less-rails", "4.0.0"
 gem "simple_form"
 
 ## TOOLS AND UTILITIES ##
