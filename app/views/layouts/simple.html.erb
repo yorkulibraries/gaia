@@ -2,34 +2,33 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "application" %>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <%= csrf_meta_tag %>
-    <%= javascript_importmap_tags %> 
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_include_tag "application" %>
   </head>
   <body>
     <div class="container">
       <% flash.each do |name, msg| %>
-        <div class="push-down"></div>
         <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
           <a class="close" data-dismiss="alert">×</a>
           <%= msg %>
         </div>
       <% end %>
 
-      <div class="page-header">
-          <%= content_tag :h1, yield(:title) if show_title? && !content_for?(:title_html) %>
-        <%= yield (:title_html) if content_for?(:title_html)%>
-      </div>
+      <header>
+        <% if show_title? || content_for?(:title_html) %>
+          <%= content_tag :h1, yield(:title), class: "h2" %>
+          <%= yield (:title_html) if content_for?(:title_html)%>
+        <% end %>
+      </header>
 
-      <div class="row">
-        <div class="span12">
-          <%= yield %>
-        </div>
-      </div>
+      <main>
+        <%= yield %>
+      </main>
       
-      <section class="weak push-down">
+      <footer>
         <p class="text-muted">&copy; York University Libraries. All rights reserved. (Version: <%= Rails.application.config.git_commit_hash %>)</p>
-      </section>  
+      </footer>  
     </div>
   </body>
 </html>

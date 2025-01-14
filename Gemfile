@@ -9,8 +9,6 @@ gem 'rails', '~> 7.0.0'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt-ruby', '~> 3.1.2'
 
-gem "therubyracer", platforms: :ruby
-
 ## DEPLOYMENT ##
 gem 'puma'
 
@@ -18,19 +16,20 @@ gem 'puma'
 gem 'mysql2'
 
 ## CSS AND JAVASCRIPT ##
-gem 'sass-rails', '5.0.8'
-gem "less-rails", "4.0.0"
-gem "sprockets-rails"
-gem 'importmap-rails'
-
-## BOOTSTRAP && SIMPLE_FORM && FLASH UPLOAD ##
-gem 'twitter-bootstrap-rails', "2.2.8" #"3.2.2"
+gem 'sprockets-rails'
+gem 'bootstrap'
+gem "sassc-rails"
 gem "simple_form"
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'jquery-fileupload-rails'
+gem 'font-awesome-sass'
 
 ## TOOLS AND UTILITIES ##
 gem 'kaminari'
 gem "cancancan"
 gem "rubyzip"
+gem 'active_link_to'
 
 ## UPLOADING AND MANIPULATING FILES ##
 gem "carrierwave"
