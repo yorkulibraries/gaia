@@ -3,6 +3,5 @@
   alert("Failed to upload attachment: <%= j @attachment.errors.full_messages.join(', ') %>");
 <% else %>
   $("#attachments").prepend("<%= j render @attachment %>");
-  intialize_popovers();
 <% end %>
 

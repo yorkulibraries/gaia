@@ -2,13 +2,13 @@ module DataRequestsHelper
   
   def print_status_color(status)
     if status == DataRequest::FILLED
-      "alert-success"
+      "success"
     elsif status == DataRequest::OPEN
-      "alert-info"
+      "info"
     elsif status == DataRequest::CANCELLED
-      "alert-danger"
+      "danger"
     elsif status = DataRequest::EXPIRED
-      "alert-warning"
+      "warning"
     else
       ""
     end

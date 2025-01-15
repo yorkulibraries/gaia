@@ -1,47 +1,45 @@
 <% title "Data Request Details" %>
 <div class="requests">
 
-	<% if can?(:update, @data_request) && (@data_request.status == DataRequest::OPEN || @data_request.status == DataRequest::EXPIRED) %>
-		<%= link_to edit_data_request_path(@data_request), class: "green" do %>
-	   <i class="icon-edit"></i> Make Changes
-	 	<% end %>
-	<% end %>
+  <% if can?(:update, @data_request) && (@data_request.status == DataRequest::OPEN || @data_request.status == DataRequest::EXPIRED) %>
+    <%= link_to edit_data_request_path(@data_request), class: 'btn btn-success btn-sm mb-3' do %>
+     <i class="bi-pencil"></i> Make Changes
+    <% end %>
+  <% end %>
 
-	<%= render @data_request %>
+  <%= render @data_request %>
 
+  <% if can?(:create, Attachment) && @data_request.status == DataRequest::OPEN %>
+   <div class="well mb-5">
+      <h3>Upload Files</h3>
 
-	<% if can?(:create, Attachment) && @data_request.status == DataRequest::OPEN %>
- 	 <div class="well" style="background-color: #F6F8F3">
-			<h3>Upload Files</h3>
-	    <%= form_for [@data_request, @attachment], html: { id: "jq_attachment", class: "hide" } do |f| %>
-	      <%= f.file_field :file, multiple: true, name: "attachment[file]", title: "Select a File", type: :file %>
+      <%= form_for [@data_request, @attachment], html: { id: "jq_attachment", class: "mt-3 form" } do |f| %>
+        <%= f.file_field :file, multiple: true, name: "attachment[file]", title: "Select a File", type: :file %>
 
-			<div id="files"></div>
-	    <% end %>
+      <div id="files"></div>
+      <% end %>
 
-	    <%= link_to "Add Attachment", new_data_request_attachment_path(@data_request), class: "btn btn-small btn-primary", id: "attachment_button" %>
+      <div id="progress" class="progress d-none mt-3" role="progressbar" aria-label="Upload progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" style="width: 0%">0%</div>
+      </div>
 
-			<br/>
+      <div id="upload_error" class="alert alert-error d-none alert-dismissible" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  <% end %>
 
-			<div id="progress" class="progress alert-info progress-striped hide">
-				<div class="bar"></div>
-			</div>
-      <div id="upload_error" class="alert alert-error hide">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-			</div>
-
-	  </div>
-	<% end %>
-
-	<h4>Attachments</h4>
   <%= render :template => 'attachments/index' %>
 
-
   <% if @data_request && @data_request.status != DataRequest::CANCELLED && can?(:cancel, @data_request) %>
-		<hr/>
-		<div class="pull-right">
-  			<a href='#cancel_request_modal_<%= @data_request.id %>' role="button" class="red" data-toggle="modal"><i class="icon-trash"></i> Cancel This Request</a>
-  			<%= render "data_requests/cancel_request", data_request: @data_request %>
-		</div>
-	<% end %>
+    <hr>
+    <a href="#" class="link-danger float-end" data-bs-toggle="modal" data-bs-target="#cancel_request_modal_<%= @data_request.id %>">
+      Cancel This Request
+    </a>
+
+    <div class="clearfix"></div>
+
+    <%= render "data_requests/cancel_request", data_request: @data_request %>
+
+  <% end %>
 </div>

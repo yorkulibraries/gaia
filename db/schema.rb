@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_130921) do
-
+ActiveRecord::Schema[7.0].define(version: 2025_01_12_191721) do
   create_table "attachments", id: :integer, charset: "utf8mb3", collation: "utf8mb3_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "created_by_id"
     t.integer "data_request_id"
     t.string "file"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "audits", id: :integer, charset: "utf8mb3", collation: "utf8mb3_unicode_ci", force: :cascade do |t|
@@ -35,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_130921) do
     t.integer "version", default: 0
     t.string "comment"
     t.string "remote_address"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.string "request_uuid"
     t.index ["associated_id", "associated_type"], name: "associated_index"
     t.index ["auditable_id", "auditable_type"], name: "auditable_index"
@@ -62,8 +61,8 @@ ActiveRecord::Schema.define(version: 2020_09_24_130921) do
     t.date "expires_after"
     t.date "completed_date"
     t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.text "participants_names"
     t.text "scanned_maps"
   end
@@ -75,8 +74,8 @@ ActiveRecord::Schema.define(version: 2020_09_24_130921) do
     t.string "usertype"
     t.string "role"
     t.boolean "deleted", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
 end

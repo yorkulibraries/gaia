@@ -1,19 +1,21 @@
-<div class="modal hide fade" id='fill_request_modal_<%= data_request.id %>'>
-  <%= simple_form_for data_request, url: fill_data_request_path(data_request), :html => {:id => "edit_data_request_for_fill_#{data_request.id}"}, method: :post do |f| %>
-
- 	 <div class="modal-header">
-	  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		  <h3>Fill This Request</h3>
-  	</div>
-	  <div class="modal-body">
-	    <p></p>
-			<%= f.input :expires_after, input_html: {id: "data_request_expires_after_#{data_request.id}" }, label: "Please Select Expires After Date:",  collection: DataRequest.expires_after_dates, title: "Expires After Date", selected: DataRequest.expires_after_dates.first  %>
-			<p class="muted">Filling request will notify the requester that the data is ready to be downloaded.</p>
-	  </div>
-	  <div class="modal-footer">
-		  <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-		  <%= f.button :submit, "Fill Request", class: "btn btn-success"%>
-	  </div>
-
-	<% end %>
+<div class="modal fade" id="fill_request_modal_<%= data_request.id %>" tabindex="-1" aria-labelledby="fill_request_modal_<%= data_request.id %>_label" aria-hidden="true">
+	<%= simple_form_for data_request, url: fill_data_request_path(data_request), :html => {:id => "edit_data_request_for_fill_#{data_request.id}"}, method: :post do |f| %>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="fill_request_modal_<%= data_request.id %>_label">Fill This Request</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= f.input :expires_after, input_html: {id: "data_request_expires_after_#{data_request.id}", class: "form-select" }, label: "Please Select Expires After Date:",  collection: DataRequest.expires_after_dates, title: "Expires After Date", selected: DataRequest.expires_after_dates.first  %>
+        
+				<p class="muted">Filling request will notify the requester that the data is ready to be downloaded.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <%= f.button :submit, "Fill Request", class: "btn btn-success"%>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>

@@ -1,26 +1,26 @@
 <% title "Data Requests" %>
 
 <ul class="nav nav-tabs">
-	<li class="<%= "active" if params[:status] == DataRequest::OPEN || params[:status] == nil %>">
-		<a href="<%= data_requests_path(status: DataRequest::OPEN) %>">Open</a>
-	</li>
-	<li class="<%= "active" if params[:status] == DataRequest::FILLED %>">
-		<a href="<%= data_requests_path(status: DataRequest::FILLED) %>">Filled</a>
-	</li>
-	<li class="<%= "active" if params[:status] == DataRequest::CANCELLED %>">
-		<a href="<%= data_requests_path(status: DataRequest::CANCELLED) %>">Cancelled</a>
-	</li>
-	<li class="<%= "active" if params[:status] == DataRequest::EXPIRED %> pull-right">
-		<a href="<%= data_requests_path(status: DataRequest::EXPIRED) %>" class="muted">Expired Requests</a>
-	</li>
+  <li class="nav-item">
+    <%= active_link_to "Open", data_requests_path(status: DataRequest::OPEN), class:"nav-link", active: params[:status] == DataRequest::OPEN || params[:status].nil? %>
+  </li>
+  <li class="nav-item">
+    <%= active_link_to "Filled", data_requests_path(status: DataRequest::FILLED), class:"nav-link", active: params[:status] == DataRequest::FILLED %>
+  </li>
+  <li class="nav-item">
+    <%= active_link_to "Cancelled", data_requests_path(status: DataRequest::CANCELLED), class:"nav-link", active: params[:status] == DataRequest::CANCELLED %>
+  </li>
+  <li class="nav-item">
+    <%= active_link_to "Expired", data_requests_path(status: DataRequest::EXPIRED), class:"nav-link", active: params[:status] == DataRequest::EXPIRED %>
+  </li>
 </ul>
 
-<div class="requests">
+<div class="requests mt-4">
 	<% if @data_requests.size > 0 %>
 		<% @data_requests.each do |data_request| %>
 			<%= render partial: data_request %>
 		<% end %>
 	<% else %>
-		<p>There are no data request with <strong><%= params[:status] %></strong> status</p>
+		<p>There are no data request with <strong><%= params[:status] ? params[:status] : DataRequest::OPEN %></strong> status</p>
 	<% end %>
 </div>

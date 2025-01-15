@@ -1,123 +1,128 @@
-
-<div class="requests">
-  <%= simple_form_for @data_request, :html => {} do |f| %>
-
-	<table class="table condensed">
-		<tr class="first">
-			<td class="span3">
-				<h4>Name &amp; Contact</h4>
-			</td>
-			<td class="fields">
-				<div class="span8">
-					<h3 class="requestor_name"><%= current_user.name.capitalize %></h3>
+<%= simple_form_for @data_request, :html => {} do |f| %>
+  <div class="row my-4">
+		<div class="col-md-4">
+			<h2 class="h5">Name &amp; Contact</h2>
+		</div>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-12 mb-3">
+					<h3 class="requestor_name"><%= current_user.name %></h3>
 				</div>
-				<div class="span4">
-					<%= f.input :phone, label: "Phone Number", input_html: {class: "input-block-level"} %>
+				<div class="col-md-6">
+					<%= f.input :phone, label: "Phone Number", input_html: {class: "form-control"} %>
 				</div>
-				<div class="span4">
-					<%= f.input :alt_email, label: "Contact Email", input_html: {class: "input-block-level"} %>
+				<div class="col-md-6">
+					<%= f.input :alt_email, label: "Contact Email", input_html: {class: "form-control"} %>
 				</div>
-			</td>
-		</tr>
+			</div>
+		</div>
+	</div>
 
-		<tr>
-			<td class="span3">
-				<h4>Data or Map Request Details</h4>
-			</td>
-			<td class="fields">
+  <hr>
 
-				<div class="span8">
+	<div class="row my-4">
+		<div class="col-md-4">
+			<h2 class="h5">Data or Map Request Details</h2>
+		</div>
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-12 mb-3">
 					<ul class="nav nav-pills" id="course_or_project_selector">
-						<li class="active" id="1">
-							<a href="#" class="project_or_course_link" data-which="course">For a Course</a>
+						<li class="nav-item" id="1">
+							<a class="nav-link active project_or_course_link" href="#" data-which="course">For a Course</a>
 						</li>
-				    <li id="2">
-				    	<a href="#" id="project_link" class="project_or_course_link" data-which="project">For Research</a>
+				    <li class="nav-item" id="2">
+				    	<a class="nav-link project_or_course_link"href="#" id="project_link" data-which="project">For Research</a>
 				    </li>
 		    	</ul>
 					<%= f.input :course, as: :hidden %>
 				</div>
 
-				<div class="span8">
-					<div id="course_info_box">
-			      <%= f.input :course_info, input_html: {class: "span4"} %>
+				<div class="col-md-12">
+					<div class="mt-3" id="course_info_box">
+			      <%= f.input :course_info, input_html: {class: "form-control"} %>
 			    </div>
 
-					<div class="show" id="project_description_box">
-			      <%= f.input :project_description, as: :text, input_html: {:rows => 2, :cols => 200, :class => "span6"}  %>
+					<div class="mt-3" id="project_description_box">
+			      <%= f.input :project_description, as: :text, input_html: {:rows => 2, :cols => 200, :class => "form-control"}  %>
 			    </div>
 				</div>
 
+				<div class="my-2">
+					<hr>
+				</div>
 
-				<hr class="span8"/>
-				<div class="span4">
-		       <%= f.input :project_due_date, required: true, as: :string, input_html: {class: "input-block-level"} %>
+				<div class="col-md-6">
+		       <%= f.input :project_due_date, required: true, as: :string, input_html: {class: "form-control"} %>
 		    </div>
-		    <div class="span4">
+
+		    <div class="col-md-6">
 		      <% unless current_user.usertype == User::FACULTY %>
-		      	<%= f.input :supervisor, label: "Professor/Supervisor", input_html: {class: "input-block-level"} %>
+		      	<%= f.input :supervisor, label: "Professor/Supervisor", input_html: {class: "form-control"} %>
 					<% end %>
 		    </div>
 
-				<div class="span8" id="participants_count_box">
-					<%= f.input :participants_count, label: "How many people will be using these data or maps?", collection: 1..8, :include_blank => false %>
+		    <div class="col-md-12 mt-3" id="participants_count_box">
+					<%= f.input :participants_count, label: "How many people will be using these data or maps?", collection: 1..8, :include_blank => false, input_html: {class: "form-select"} %>
 				</div>
-				<div class="span8 hide" id="participants_names_box">
-					<%= f.input :participants_names, label: "Please list their names, one per line, including yourself. <br/>Indicate name, status (York Faculty, York Student, or York Staff), and email.", as: :text, input_html: {:rows => 5, :cols => 200, :class => "span8", title: "Please list their name, one per line. Indicate name, status (York Faculty, York Student, or York Staff), and email."} %>
+
+				<div class="col-md-12 mt-3 d-none" id="participants_names_box">
+					<%= f.input :participants_names, label: "Please list their names, one per line, including yourself. Indicate name, status (York Faculty, York Student, or York Staff), and email.", as: :text, input_html: {:rows => 5, :cols => 200, :class => "form-control"} %>
 				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<h4>Data Sets</h4>
-			</td>
-			<td class="fields">
-				<div class="span8">
-          <label>
-           If you are requesting data, list your datasets one per line. Please specify the geographical area that corresponds to your data request. If the dataset is tiled include the index/tile number for the dataset. eg. City of Toronto Property Data Maps (56m-23, 57m-21, 57m-22). To determine the data you need, visit the
-           <a href="https://researchguides.library.yorku.ca/geospatial">Geospatial Data Guide</a>.
-         </label>
-		      <%= f.input :datasets, label: false, as: :text, input_html: {:rows => 5, :cols => 200, :class => "span8", title: "List your datasets, one per line.\neg. Ontario Wind Power Allocation \neg. City of Toronto Property Data Maps (56m-23, 57m-21, 57m-22)"} %>
-		    </div>
+			</div>
+	  </div>
+	</div>
 
-			</td>
-		</tr>
-    <tr>
-      <td>
-        <h4>Scanned Maps</h4>
-      </td>
-      <td class="fields">
-        <div class="span8">
-          <label>
-            List the print maps from the Map Library that you would like to receive a scan. Provide the title and call number of each map.
-            The title/call numbers can be found in <a href="https://ocul-yor.primo.exlibrisgroup.com/discovery/search?vid=01OCUL_YOR:YOR_DEFAULT&tab=Everything&search_scope=MyInst_and_CI&mode=advanced&displayMode=full&bulkSize=10&highlight=true&dum=true&query=any,contains,&displayField=all&pcAvailabiltyMode=true&lang=en">OMNI</a>
-            or via our
-            <a href="https://researchguides.library.yorku.ca/c.php?g=679618&p=4793541">holdings list</a>.
-            For airphotos, use the <a href="https://researchguides.library.yorku.ca/maps/airphotos">airphoto indexes</a> to determine the year and photo numbers.
-            Please note, we can only provide maps that are in public domain. In addition, if we don't have a scan of the map, we won't be able to provide it.
-         </label>
-          <%= f.input :scanned_maps, label: false, as: :text, input_html: {:rows => 5, :cols => 200, :class => "span8", title: "List your datasets, one per line.\neg. Ontario Wind Power Allocation \neg. City of Toronto Property Data Maps (56m-23, 57m-21, 57m-22)", aria: { label: "Datasets"}} %>
-        </div>
+	<hr>
+	
+	<div class="row my-4">
+		<div class="col-md-4">
+			<h2 class="h5">Data Sets</h2>
+		</div>
+		<div class="col-md-8">
+      <label for="datasets_textarea" class="mb-3">
+				If you are requesting data, list your datasets one per line. Please specify the geographical area that corresponds to your data request. If the dataset is tiled include the index/tile number for the dataset. eg. City of Toronto Property Data Maps (56m-23, 57m-21, 57m-22). To determine the data you need, visit the
+				<a href="https://researchguides.library.yorku.ca/geospatial">Geospatial Data Guide</a>.
+      </label>
 
-      </td>
-    </tr>
-		<tr>
-			<td>
+		  <%= f.input :datasets, label: false, as: :text, input_html: {:id => "datasets_textarea", :rows => 5, :cols => 200, :class => "form-control"} %>
+		</div>
+	</div>
 
-			</td>
-			<td class="fields">
-				<div class="span8">
-          <label>Please include any additional information that may help us in facilitating your request</label>
-		       <%= f.input :other_info, as: :text, input_html: {:rows => 5, :cols => 200, :class => "span8", aria: { label: "Additional Info" }}, label: false %>
-		    </div>
-			  <div class="span8">
-          <% submit_text = @data_request.new_record? ? "Create Data/Map Request" : "Edit Data/Map Request" %>
-		      <%= f.submit submit_text, :class => 'btn btn-primary' %>
-          or <%= link_to "Cancel", :back %>
-		    </div>
-			</td>
-		</tr>
-	</table>
+	<hr>
 
-  <% end %>
-</div>
+	<div class="row my-4">
+		<div class="col-md-4">
+      <h2 class="h5">Scanned Maps</h2>
+    </div>
+    <div class="col-md-8">
+    	<label for="scanned_maps_textarea" class="mb-3">
+        List the print maps from the Map Library that you would like to receive a scan. Provide the title and call number of each map.
+        The title/call numbers can be found in <a href="https://ocul-yor.primo.exlibrisgroup.com/discovery/search?vid=01OCUL_YOR:YOR_DEFAULT&tab=Everything&search_scope=MyInst_and_CI&mode=advanced&displayMode=full&bulkSize=10&highlight=true&dum=true&query=any,contains,&displayField=all&pcAvailabiltyMode=true&lang=en">OMNI</a>
+        or via our
+        <a href="https://researchguides.library.yorku.ca/c.php?g=679618&p=4793541">holdings list</a>.
+        For airphotos, use the <a href="https://researchguides.library.yorku.ca/maps/airphotos">airphoto indexes</a> to determine the year and photo numbers.
+        Please note, we can only provide maps that are in public domain. In addition, if we don't have a scan of the map, we won't be able to provide it.
+      </label>
+
+      <%= f.input :scanned_maps, label: false, as: :text, input_html: {:id => "scanned_maps_textarea", :rows => 5, :cols => 200, :class => "form-control", aria: { label: "Datasets"}} %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row my-4">
+		<div class="col-md-4">
+		</div>
+
+		<div class="col-md-8">
+		  <%= f.input :other_info, as: :text, input_html: {:rows => 5, :cols => 200, :class => "form-control", aria: { label: "Additional Info" }}, label: "Please include any additional information that may help us in facilitating your request." %>
+
+			<div class="mt-5">
+	      <% submit_text = @data_request.new_record? ? "Create Data/Map Request" : "Edit Data/Map Request" %>
+			  <%= f.submit submit_text, :class => 'btn btn-primary' %> or <%= link_to "Cancel", :back %>
+			</div>
+    </div>
+  </div>
+
+<% end %>
