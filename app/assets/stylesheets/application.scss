@@ -24,3 +24,9 @@
 body {
   background: #fffefe;
 }
+
+form {
+  .error {
+    color: $red;
+  }
+}
