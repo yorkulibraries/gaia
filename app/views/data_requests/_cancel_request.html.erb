@@ -1,24 +1,27 @@
-<div class="modal hide fade" id='cancel_request_modal_<%= data_request.id %>' >
+<div class="modal fade" id="cancel_request_modal_<%= data_request.id %>" tabindex="-1" aria-labelledby="cancel_request_modal_<%= data_request.id %>_label" aria-hidden="true">
   <%= simple_form_for data_request, url: cancel_data_request_path(data_request), :html => {:id => "edit_data_request_for_cancel_#{data_request.id}"}, method: :post do |f| %>
-	
- 	 <div class="modal-header">
-	  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		  <h3>Cancel This Request</h3>
-  	</div>
-	  <div class="modal-body">
-	    <p><strong>Please note:</strong></p> 
-	    <ul>
-	      <li>Once cancelled, the request cannot be changed again.</li>
-	      <li>All attachments associated with this request will be permanently deleted.</li>
-	    </ul>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="cancel_request_modal_<%= data_request.id %>_label">Cancel This Request</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Please note:</strong></p> 
+		    <ul>
+		      <li>Once cancelled, the request cannot be changed again.</li>
+		      <li>All attachments associated with this request will be permanently deleted.</li>
+		    </ul>
       
-			<%= f.input :cancellation_reason, label: "A Reason must be provided", as: :text, input_html: {:rows => 5, :cols => 200, :class => "span5  "}, title: "A reason must be provided"  %>
-			<p class="muted">Cancelling the request will notify the requester.</p>
-	  </div>
-	  <div class="modal-footer">
-		  <a href="#" class="btn" data-dismiss="modal">I changed my mind, go back</a>
-		  <%= f.button :submit, "Confirm Cancel", class: "btn btn-danger"%>
-	  </div>
+				<%= f.input :cancellation_reason, label: "A Reason must be provided", as: :text, input_html: {:rows => 5, :cols => 200, :class => "form-control  "}, title: "A reason must be provided"  %>
 
-	<% end %>
+				<p class="muted">Cancelling the request will notify the requester.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">I changed my mind, go back</button>
+        <%= f.button :submit, "Confirm Cancel", class: "btn btn-danger"%>
+      </div>
+    </div>
+  </div>
+  <% end %>
 </div>

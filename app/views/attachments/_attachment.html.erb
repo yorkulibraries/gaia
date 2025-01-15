@@ -9,7 +9,9 @@
   <div class="media-body">
 
 	  <% if attachment.data_request.status != DataRequest::FILLED  %>
-	    <%= link_to "Delete", [@data_request,attachment], :method => :delete , :class => "delete_attachment pull-right red", data: { confirm: 'Are you sure?' } %>
+	    <%= link_to [@data_request,attachment], :method => :delete , :class => "delete_attachment link-danger float-end", data: { confirm: 'Are you sure?' } do %>
+	    	<i class="bi-trash"></i> Delete
+	    <% end %>
     <% end %>
 
 		<h4>

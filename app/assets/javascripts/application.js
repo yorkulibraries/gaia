@@ -25,8 +25,6 @@ $(function(){
 });
 
 $(function() {
-  // Data Request details page: show attachments button or form but not both.
-  $("#attachment_button").hide();
   $("#jq_attachment").show();
     
   $('#jq_attachment').fileupload({
@@ -34,44 +32,52 @@ $(function() {
     singleFileUploads: true,
     add: function (e, data) {
       $.each(data.files, function (index, file) {
-        var input = $('<input id="attachment[description]" type="text" name="attachment[description]" placeholder="Description" title="attachement file" />').addClass('attachment_description');
-      
-        var button = $('<button/>').text('Upload').addClass('btn btn-tiny btn-primary pull-right').click(function () {
-          data.formData = {"attachment[description]": $(this).siblings("input").val()};
+        var id = file.name + Date.now();
+        var inputId = 'input_' + id;
+
+        var label = $('<label class="form-label">Description</label>').attr('for', inputId);
+        var input = $('<input class="form-control" type="text" name="attachment[description]">').attr('id', inputId);
+        
+        var submit = $('<button class="btn btn-sm btn-primary">').text('Upload').click(function () {
+          data.formData = {"attachment[description]": $(this).parent().siblings("input").val()};
           var jqXHR = data.submit();
-          $(this).hide();
-          $(this).parent().remove();
+          $(this).parent().parent().remove();
         });   
 
-        var close_button = $('<button/>').text('Cancel').addClass('btn btn-tiny pull-right').click(function () {              
-          $(this).parent().remove();
-          $(this).hide();
+        var cancel = $('<button class="btn btn-secondary btn-sm">').text('Cancel').click(function () {      
+          $(this).parent().parent().remove();
         });
   
-        var label = $("<h6/>").text("Upload this file?");
-        var filename = $('<div/>').append(label).addClass("attachment-upload").append(close_button).append("").append(button).append($('<h4/>').text(file.name)).append(input);
-        filename.appendTo("#files");
+        var prompt = $('<p class="my-3">Upload this file?</p>');
+        var filename = $('<p class="mt-3 fw-bold">').text(file.name);
+        var buttons = $('<div>').append(submit).append(" ").append(cancel);
+        
+        var upload = $('<div class="attachment-upload">').append(filename).append(label).append(input).append(prompt).append(buttons);
+        
+        $('#files').append(upload);
       });
     },      
     start: function (e) { 
-      $('#progress').show();
-    },        
+      $('.progress-bar').css({'width': '0%'}).text('');
+      $('#progress').removeClass('invisible');
+    },
     progress: function (e, data) {
       $.each(data.files, function (index, file) {
-        var rate = (data.loaded / data.total) * 100
-        $(".bar").css({'font-size': '18px','width': rate + '%'}).text(Math.round(rate) + "% of " + (data.total/1000) + " KBytes ").show();
+        var rate = (data.loaded / data.total) * 100;
+        $('.progress-bar').css({'width': rate + '%'}).text(Math.round(rate) + "% of " + data.total/1000000 + " MB");
       });
     },        
     done: function (e, data) {
       $.each(data.files, function (index, file) {
-        $('#progress').hide();
+        $('.progress-bar').css({'width': '0%'}).text('');
+        $('#progress').addClass('invisible');
       });
     },
     fail: function (e, data) {
-      $('#upload_error').show();
       $.each(data.files, function (index, file) {
-        $('#upload_error').text("There was an error uploading " + file.name + " file. Thrown: " + data.errorThrown + "Status: " + data.textStatus).show();
+        $('#upload_error').text("There was an error uploading " + file.name + " file. Thrown: " + data.errorThrown + "Status: " + data.textStatus);
       });
+      $('#upload_error').removeClass('invisible');
     }
   });        
 });

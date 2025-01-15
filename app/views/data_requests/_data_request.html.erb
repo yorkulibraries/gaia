@@ -1,116 +1,112 @@
 <div class="request"  data-id="<%= data_request.id %>">
-	<div class="row">
-		<div class="span6 name">
-			<h3><%= link_to data_request.requested_by.nil? ? data_request.id : data_request.requested_by.name, data_request %></h3>
-		</div>
-		<div class="span4 due_date">
-			<span class="field-label">due on: </span><strong><%= data_request.project_due_date.strftime("%b %e, %Y")%></strong>
-			<% if data_request.status == DataRequest::FILLED %>
-				&nbsp; &nbsp; 	&nbsp; &nbsp; <span class="field-label">expires:</span>
-				<strong><%= data_request.expires_after.strftime("%b %e, %Y") rescue nil %></strong>
-			<% elsif data_request.status == DataRequest::EXPIRED %>
-				&nbsp; &nbsp; 	&nbsp; &nbsp; <span class="field-label">expired:</span>
-				<strong><%= data_request.expires_after.strftime("%b %e, %Y") rescue nil %></strong>
-			<% end %>
-		</div>
-		<div class="span float-right">
-			<div class="alert alert-block <%= print_status_color(data_request.status)%>">
-				<h5 class="<%= data_request.status %>">
-					<%= data_request.status %>
-				</h5>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="span6 datasets">
-			<h5>Datasets</h5>
-			<% if data_request.datasets.present? %>
-				<ul>
-					<% data_request.datasets.each_line do |line| %>
-						<li><%= line %></li>
-					<% end %>
-				</ul>
-			<% else %>
-				<p class="gray">No Datasets were requested</p>
-			<% end %>
+  <div class="row">
+    <div class="col-md-6 name">
+      <h3><%= link_to data_request.requested_by.nil? ? data_request.id : data_request.requested_by.name, data_request %></h3>
+    </div>
+    <div class="col-md-6 due-date">
+      <span class="field-label">due on: </span><strong><%= data_request.project_due_date.strftime("%b %e, %Y")%></strong>
+      <% if data_request.status == DataRequest::FILLED %>
+        <span class="field-label">expires:</span>
+        <strong><%= data_request.expires_after.strftime("%b %e, %Y") rescue nil %></strong>
+      <% elsif data_request.status == DataRequest::EXPIRED %>
+        <span class="field-label">expired:</span>
+        <strong><%= data_request.expires_after.strftime("%b %e, %Y") rescue nil %></strong>
+      <% end %>
+      <span class="badge rounded-pill text-bg-<%= print_status_color(data_request.status)%>">
+        <%= data_request.status %>
+      </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 datasets">
+      <h5>Datasets</h5>
+      <% if data_request.datasets.present? %>
+        <ul>
+          <% data_request.datasets.each_line do |line| %>
+            <li><%= line %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No Datasets were requested</p>
+      <% end %>
 
-			<h5>Scanned Maps</h5>
-			<% if data_request.scanned_maps.present? %>
-				<ul>
-					<% data_request.scanned_maps.each_line do |line| %>
-						<li><%= line %></li>
-					<% end %>
-				</ul>
-			<% else %>
-				<p class="gray">No Scanned Maps were requested</p>
-			<% end %>
-		</div>
-		<div class="span5 course-project-info">
-			<div class="span3 no-gutter">
-				<% if data_request.course? %>
-					<h5>For A Course</h5>
-					<p><%= data_request.course_info %></p>
-				<% else %>
-					<h5>For Research: <br/>Project Description</h5>
-				 	<p><%= data_request.project_description %></p>
-				<% end %>
+      <h5>Scanned Maps</h5>
+      <% if data_request.scanned_maps.present? %>
+        <ul>
+          <% data_request.scanned_maps.each_line do |line| %>
+            <li><%= line %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No Scanned Maps were requested</p>
+      <% end %>
+    </div>
+    <div class="col-md-6 course-project-info">
+      <div class="row">
+        <div class="col-6">
+          <% if data_request.course? %>
+            <h5>For A Course</h5>
+            <p><%= data_request.course_info %></p>
+          <% else %>
+            <h5>For Research</h5>
+          <% end %>
+          <h6>Project Description</h6>
+          <p><%= data_request.project_description %></p>
+        </div>
+        <div class="col-md-6">
+          <h5>Supervisor</h5>
+          <p><%= data_request.supervisor %> </p>
+          <h5>Requested On</h5>
+          <p><%= data_request.requested_date.strftime("%b %e, %Y") rescue nil%></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if @data_request %>
+    <hr>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Contact Information</h5>
+        <p>
+          <span class="field-label">Phone:</span> <%= data_request.phone %></p><p>
+          <span class="field-label">Email:</span> <%= data_request.alt_email %>
+        </p>
+      </div>
 
-			</div>
-			<div class="span no-gutter">
-				<h5>Supervisor</h5>
-				<p><%= data_request.supervisor %> </p>
-				<h5>Requested On</h5>
-				<p><%= data_request.requested_date.strftime("%b %e, %Y") rescue nil%></p>
-			</div>
-		</div>
-	</div>
-	<% if @data_request %>
-		<hr/>
-		<div class="row">
-			<div class="span6">
-				<h5>Contact Information</h5>
-				<p>
-					<span class="field-label">Phone:</span> <%= data_request.phone %></p><p>
-					<span class="field-label">Email:</span> <%= data_request.alt_email %>
-				</p>
-			</div>
+      <div class="col-md-6 other-info">
+        <h5>How many people will be using this data?</h5>
+        <p><%= pluralize(data_request.participants_count, "person") %></p>
+      </div>
 
-			<div class="span other-info">
-			  <h5>How many people will be using this data?</h5>
-			  <p><%= pluralize(data_request.participants_count, "person") %></p>
-			</div>
-			<% if !data_request.participants_names.blank? %>
-  			<div class="span other-info">
-  			  <h5>Participants Information:</h5>
-  			  <ul>
-    				<% data_request.participants_names.each_line do |line| %>
-    					<li><%= line %></li>
-    				<% end %>
-    			</ul>
+      <% if !data_request.participants_names.blank? %>
+        <div class="col-md-6 other-info">
+          <h5>Participants Information:</h5>
+          <ul>
+            <% data_request.participants_names.each_line do |line| %>
+              <li><%= line %></li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
-			<% if data_request.course? %>
-			  <div class="span6">
-  				<h5>Project Description</h5>
-  			 	<p><%= data_request.project_description %></p>
-        </div>
-      <% end %>
-			<div class="span5">
-				<h5>Additional Info</h5>
-				<%= simple_format data_request.other_info %>
-			</div>
 
-		</div>
-	<% end %>
-
+      <div class="col-md-6">
+        <h5>Additional Info</h5>
+        <%= simple_format data_request.other_info %>
+      </div>
+    </div>
+  <% end %>
 </div>
-<hr/>
-<div class="pull-right">
-	<% if @data_request && data_request.status == DataRequest::OPEN && can?(:manage, @data_request) %>
-		<a href='#fill_request_modal_<%= data_request.id %>' role="button" class="btn btn-success xbtn-large" data-toggle="modal">Fill This Request</a>
 
-	<% end %>
-</div>
-<br/>
-	<%= render "data_requests/fill_request", data_request: data_request %>
-<br/>
+  <% if @data_request && data_request.status == DataRequest::OPEN && can?(:manage, @data_request) %>
+    <button type="button" class="btn btn-success float-end" data-bs-toggle="modal" data-bs-target="#fill_request_modal_<%= data_request.id %>">
+      Fill This Request
+    </button>
+  <% end %>
+
+<div class="clearfix"></div>
+
+<hr>
+
+<%= render "data_requests/fill_request", data_request: data_request %>
+
