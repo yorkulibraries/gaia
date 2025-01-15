@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
   skip_authorization_check
 
   def new
+    if !request.headers['HTTP_PYORK_USER']
+      return redirect_to invalid_login_url
+    end
 
     pyi = {
       name: "#{request.headers['HTTP_PYORK_FIRSTNAME']} #{request.headers['HTTP_PYORK_SURNAME']}",
@@ -11,6 +14,7 @@ class SessionsController < ApplicationController
     }
 
     @user = User.find_or_create(pyi)
+
     session[:user_id] = @user.id
     if @user.role == User::REGULAR_USER_ROLE
       redirect_to terms_of_use_url, notice: "Logged in!"
@@ -19,21 +23,14 @@ class SessionsController < ApplicationController
     end
   end
 
-
   def invalid_login
-    render :layout => "simple"
   end
-
 
   def destroy
     session[:user_id] = nil
-
-    cookies.delete("mayaauth", :domain => 'yorku.ca')
-    cookies.delete("pybpp", :domain => 'yorku.ca')
-
-    redirect_to "http://www.library.yorku.ca"
+    reset_session
+    redirect_to "https://passportyork.yorku.ca/ppylogin/ppylogout", allow_other_host: true
   end
-
 
   # TERMS OF USE
   def terms_of_use
