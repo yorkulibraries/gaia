@@ -12,7 +12,7 @@
         <span class="field-label">expired:</span>
         <strong><%= data_request.expires_after.strftime("%b %e, %Y") rescue nil %></strong>
       <% end %>
-      <span class="badge rounded-pill text-bg-<%= print_status_color(data_request.status)%>">
+      <span class="p-2 badge text-bg-<%= print_status_color(data_request.status)%>">
         <%= data_request.status %>
       </span>
     </div>
