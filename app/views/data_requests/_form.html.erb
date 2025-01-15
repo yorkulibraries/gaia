@@ -67,7 +67,7 @@
 				</div>
 
 				<div class="col-md-12 mt-3 d-none" id="participants_names_box">
-					<%= f.input :participants_names, label: "Please list their names, one per line, including yourself. Indicate name, status (York Faculty, York Student, or York Staff), and email.", as: :text, input_html: {:rows => 5, :cols => 200, :class => "form-control", title: "Please list their name, one per line. Indicate name, status (York Faculty, York Student, or York Staff), and email."} %>
+					<%= f.input :participants_names, label: "Please list their names, one per line, including yourself. Indicate name, status (York Faculty, York Student, or York Staff), and email.", as: :text, input_html: {:rows => 5, :cols => 200, :class => "form-control"} %>
 				</div>
 			</div>
 	  </div>
@@ -80,11 +80,12 @@
 			<h2 class="h5">Data Sets</h2>
 		</div>
 		<div class="col-md-8">
-      <label for="datasets_textarea">
+      <label for="datasets_textarea" class="mb-3">
 				If you are requesting data, list your datasets one per line. Please specify the geographical area that corresponds to your data request. If the dataset is tiled include the index/tile number for the dataset. eg. City of Toronto Property Data Maps (56m-23, 57m-21, 57m-22). To determine the data you need, visit the
 				<a href="https://researchguides.library.yorku.ca/geospatial">Geospatial Data Guide</a>.
       </label>
-		  <%= f.input :datasets, label: false, as: :text, input_html: {:id => "datasets_textarea", :rows => 5, :cols => 200, :class => "form-control", title: "List your datasets, one per line.\neg. Ontario Wind Power Allocation \neg. City of Toronto Property Data Maps (56m-23, 57m-21, 57m-22)"} %>
+
+		  <%= f.input :datasets, label: false, as: :text, input_html: {:id => "datasets_textarea", :rows => 5, :cols => 200, :class => "form-control"} %>
 		</div>
 	</div>
 
@@ -95,7 +96,7 @@
       <h2 class="h5">Scanned Maps</h2>
     </div>
     <div class="col-md-8">
-    	<label for="scanned_maps_textarea">
+    	<label for="scanned_maps_textarea" class="mb-3">
         List the print maps from the Map Library that you would like to receive a scan. Provide the title and call number of each map.
         The title/call numbers can be found in <a href="https://ocul-yor.primo.exlibrisgroup.com/discovery/search?vid=01OCUL_YOR:YOR_DEFAULT&tab=Everything&search_scope=MyInst_and_CI&mode=advanced&displayMode=full&bulkSize=10&highlight=true&dum=true&query=any,contains,&displayField=all&pcAvailabiltyMode=true&lang=en">OMNI</a>
         or via our
@@ -104,7 +105,7 @@
         Please note, we can only provide maps that are in public domain. In addition, if we don't have a scan of the map, we won't be able to provide it.
       </label>
 
-      <%= f.input :scanned_maps, label: false, as: :text, input_html: {:id => "scanned_maps_textarea", :rows => 5, :cols => 200, :class => "form-control", title: "List your datasets, one per line.\neg. Ontario Wind Power Allocation \neg. City of Toronto Property Data Maps (56m-23, 57m-21, 57m-22)", aria: { label: "Datasets"}} %>
+      <%= f.input :scanned_maps, label: false, as: :text, input_html: {:id => "scanned_maps_textarea", :rows => 5, :cols => 200, :class => "form-control", aria: { label: "Datasets"}} %>
     </div>
   </div>
 
@@ -115,7 +116,7 @@
 		</div>
 
 		<div class="col-md-8">
-		  <%= f.input :other_info, as: :text, input_html: {:rows => 5, :cols => 200, :class => "form-control", aria: { label: "Additional Info" }}, label: "Please include any additional information that may help us in facilitating your request" %>
+		  <%= f.input :other_info, as: :text, input_html: {:rows => 5, :cols => 200, :class => "form-control", aria: { label: "Additional Info" }}, label: "Please include any additional information that may help us in facilitating your request." %>
 
 			<div class="mt-5">
 	      <% submit_text = @data_request.new_record? ? "Create Data/Map Request" : "Edit Data/Map Request" %>
