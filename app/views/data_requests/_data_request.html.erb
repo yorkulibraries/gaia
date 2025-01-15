@@ -23,7 +23,9 @@
       <% if data_request.datasets.present? %>
         <ul>
           <% data_request.datasets.each_line do |line| %>
+            <% if line.strip != "" %>
             <li><%= line %></li>
+            <% end %>
           <% end %>
         </ul>
       <% else %>
@@ -34,7 +36,9 @@
       <% if data_request.scanned_maps.present? %>
         <ul>
           <% data_request.scanned_maps.each_line do |line| %>
+            <% if line.strip != "" %>
             <li><%= line %></li>
+            <% end %>
           <% end %>
         </ul>
       <% else %>
