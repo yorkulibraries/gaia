@@ -5,15 +5,20 @@
 <% @users_grouped.each do |role, users| %>
   <h4><%= role.humanize.capitalize rescue nil %></h4>
 
-  <table class="table">
+
+<table class="table table-striped">
+  <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Username</th>
-      <th>Usertype</th>
-      <th>Role</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Username</th>
+      <th scope="col">Usertype</th>
+      <th scope="col">Role</th>
+      <th scope="col"></th>
     </tr>
-    <% for user in users %>
+  </thead>
+  <tbody>
+   <% for user in users %>
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
@@ -23,5 +28,7 @@
         <td><%= link_to "Details", user %></td>
       </tr>
     <% end %>
-  </table>
+  </tbody>
+</table>
+
 <% end %>
