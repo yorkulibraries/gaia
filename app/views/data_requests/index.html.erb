@@ -21,6 +21,6 @@
 			<%= render partial: data_request %>
 		<% end %>
 	<% else %>
-		<p>There are no data request with <strong><%= params[:status] %></strong> status</p>
+		<p>There are no data request with <strong><%= params[:status] ? params[:status] : DataRequest::OPEN %></strong> status</p>
 	<% end %>
 </div>
