@@ -1,6 +1,6 @@
 <div class="attachment media" id="attachment_<%= attachment.id %>">
 
-  <% if (Rails.application.assets || ::Sprockets::Railtie.build_environment(Rails.application)).find_asset("Free-file-icons/48px/#{attachment.file.file.extension.downcase}.png").to_s %>
+  <% if File.exist?(Rails.root.join("app/assets/images/Free-file-icons/48px/#{attachment.file.file.extension.downcase}.png")) %>
     <%= link_to image_tag("Free-file-icons/48px/#{attachment.file.file.extension.downcase}.png", alt: "File", class: "media-object"), attachment.file.url, class: "pull-left" %>
   <% else %>
     <%= link_to image_tag("Free-file-icons/48px/_blank.png", alt: "File", class: "media-object"), attachment.file.url, class: "pull-left" %>
