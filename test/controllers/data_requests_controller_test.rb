@@ -141,7 +141,7 @@ class DataRequestsControllerTest < ActionController::TestCase
       request = create(:data_request, status: DataRequest::OPEN)
       attachments = create_list(:attachment, 5, data_request: request)
 
-      post :cancel, params: {id: request.id}
+      post :cancel, params: {id: request.id, data_request: { cancellation_reason: "cancelled" }}
       assert_response :redirect
       assert_redirected_to request, "Redirect back to request"
 

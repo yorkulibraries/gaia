@@ -90,16 +90,14 @@ class DataRequestsController < ApplicationController
 
     @data_request = DataRequest.find(params[:id])
     @data_request.status = DataRequest::CANCELLED
-    @data_request.cancellation_reason = params[:data_request][:cancellation_reason]
+    @data_request.cancellation_reason = params[:data_request][:cancellation_reason] unless params[:data_request].nil?
 
     if @data_request.save
-
       for attachment in @data_request.attachments.all
         attachment.destroy
       end
 
       if @data_request.attachments.count == 0
-
         DataRequestMailer.cancel_confirmation(@data_request.requested_by, @data_request).deliver_later
 
         redirect_to @data_request, notice: "The request was cancelled, all files removed."
