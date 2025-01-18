@@ -90,6 +90,7 @@ class DataRequestsController < ApplicationController
 
     @data_request = DataRequest.find(params[:id])
     @data_request.status = DataRequest::CANCELLED
+    @data_request.cancellation_reason = params[:data_request][:cancellation_reason]
 
     if @data_request.save
 
